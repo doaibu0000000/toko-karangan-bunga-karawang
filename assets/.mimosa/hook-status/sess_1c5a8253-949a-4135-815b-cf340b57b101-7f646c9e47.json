@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "mimosa-hook-status/v1",
+  "recordedAt": "2026-08-20T01:16:09.678Z",
+  "sessionId": "sess_1c5a8253-949a-4135-815b-cf340b57b101",
+  "event": "PostToolUse",
+  "toolName": "Write",
+  "file": "C:\\Users\\doaib\\OneDrive\\Desktop\\Lading Page\\README.md",
+  "outcome": "clear",
+  "coverage": "complete",
+  "findingCount": 0,
+  "durationMs": 3,
+  "hostState": "hook_complete",
+  "reportHint": ".mimosa/reports/"
+}
