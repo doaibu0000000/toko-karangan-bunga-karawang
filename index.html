@@ -259,19 +259,47 @@ h1,h2,h3,h4{font-family:var(--font-display);color:var(--forest);line-height:1.18
 @media(max-width:960px){.steps-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.steps-grid{grid-template-columns:1fr}}
 
-/* ============ TESTIMONIALS ============ */
-.testi{background:var(--cream)}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.t-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative;box-shadow:var(--shadow-sm);transition:.3s}
-.t-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
-.t-card .quote{font-family:var(--font-display);font-size:3.4rem;line-height:1;color:var(--gold);opacity:.4;position:absolute;top:18px;right:24px}
-.t-stars{color:var(--gold);letter-spacing:3px;font-size:.95rem;margin-bottom:14px}
-.t-card p{font-size:.92rem;color:var(--ink);margin-bottom:20px;line-height:1.6}
-.t-who{display:flex;align-items:center;gap:14px}
+/* ============ TESTIMONIALS (SLIDER & CAROUSEL) ============ */
+.testi{background:var(--cream);position:relative;overflow:hidden}
+.testi-slider-wrap{position:relative;margin-top:16px}
+.testi-viewport{overflow:hidden;border-radius:18px;padding:12px 6px 20px;user-select:none;touch-action:pan-y}
+.testi-track{display:flex;gap:24px;transition:transform .45s cubic-bezier(0.25, 1, 0.5, 1);will-change:transform}
+.t-card{flex:0 0 calc((100% - 48px) / 3);min-width:calc((100% - 48px) / 3);box-sizing:border-box;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;position:relative;box-shadow:var(--shadow-sm);transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;display:flex;flex-direction:column;justify-content:space-between}
+.t-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:rgba(212,160,23,.4)}
+.t-badge{display:inline-flex;align-items:center;gap:6px;background:var(--cream-2);color:var(--forest-3);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:14px;border:1px solid rgba(212,160,23,.18);align-self:flex-start}
+.t-card .quote{font-family:var(--font-display);font-size:3.2rem;line-height:1;color:var(--gold);opacity:.35;position:absolute;top:16px;right:22px;pointer-events:none}
+.t-stars{color:var(--gold);letter-spacing:3px;font-size:.92rem;margin-bottom:12px}
+.t-card p{font-size:.91rem;color:var(--ink);margin-bottom:18px;line-height:1.62;flex:1}
+.t-who{display:flex;align-items:center;gap:13px;border-top:1px dashed var(--line);padding-top:14px;margin-top:auto}
 .t-ava{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold-soft);box-shadow:0 4px 10px rgba(0,0,0,.08);flex:none;background:var(--cream-2)}
-.t-who b{display:block;font-size:.92rem;color:var(--forest)}
-.t-who span{font-size:.76rem;color:var(--muted)}
-@media(max-width:960px){.testi-grid{grid-template-columns:1fr}}
+.t-ava-init{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.95rem;color:#fff;border:2px solid var(--gold-soft);box-shadow:0 4px 10px rgba(0,0,0,.08);flex:none}
+.t-who b{display:block;font-size:.92rem;color:var(--forest);line-height:1.2}
+.t-who span{font-size:.76rem;color:var(--muted);margin-top:2px;display:block}
+
+/* Slider Navigation Buttons */
+.testi-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);color:var(--forest);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-md);transition:all .25s ease;z-index:10}
+.testi-nav-btn:hover{background:var(--forest);color:#fff;border-color:var(--forest);transform:translateY(-50%) scale(1.08)}
+.testi-prev{left:-20px}
+.testi-next{right:-20px}
+
+/* Interactive Pagination Dots */
+.testi-dots{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:24px}
+.t-dot{width:12px;height:12px;border-radius:50%;background:rgba(18,53,36,.22);border:0;cursor:pointer;padding:0;transition:all .35s cubic-bezier(0.34, 1.56, 0.64, 1)}
+.t-dot:hover{background:rgba(18,53,36,.5);transform:scale(1.15)}
+.t-dot.active{width:34px;border-radius:12px;background:linear-gradient(90deg,var(--forest),var(--gold));box-shadow:0 2px 10px rgba(212,160,23,.45)}
+
+@media(max-width:992px){
+  .t-card{flex:0 0 calc((100% - 24px) / 2);min-width:calc((100% - 24px) / 2)}
+  .testi-prev{left:-12px}
+  .testi-next{right:-12px}
+}
+@media(max-width:640px){
+  .t-card{flex:0 0 100%;min-width:100%;padding:24px 20px}
+  .testi-nav-btn{display:none}
+  .testi-dots{gap:8px;margin-top:16px}
+  .t-dot{width:10px;height:10px}
+  .t-dot.active{width:26px}
+}
 
 /* ============ FAQ ============ */
 .faq{background:var(--white)}
@@ -977,39 +1005,210 @@ footer{background:var(--forest);color:#BFD6C7;padding:70px 0 0}
 <section class="testi" id="testimoni">
   <div class="container">
     <div class="section-head center reveal">
-      <span class="eyebrow">Testimoni</span>
+      <span class="eyebrow">Testimoni Pelanggan</span>
       <h2>Kata Mereka Tentang Kami</h2>
-      <p>Kepuasan pelanggan adalah bunga terindah bagi kami.</p>
+      <p>Kepuasan pelanggan di seluruh Karawang adalah dedikasi dan kebanggaan Aida Florist.</p>
     </div>
-    <div class="testi-grid">
-      <div class="t-card reveal d1">
-        <span class="quote">”</span>
-        <div class="t-stars">★★★★★</div>
-        <p>“Pesan papan bunga grand opening kantor jam 10 pagi, jam 3 sore sudah sampai di lokasi. Rangkaiannya rapi banget dan bunganya segar. Recommended!”</p>
-        <div class="t-who">
-          <img class="t-ava" src="assets/testi-1.webp" alt="Foto Profil Bapak Hendra" width="48" height="48" loading="lazy">
-          <span><b>Bapak Hendra</b><span>Perusahaan di KIIC, Karawang</span></span>
+
+    <div class="testi-slider-wrap reveal">
+      <!-- Nav Button Prev -->
+      <button class="testi-nav-btn testi-prev" id="testiPrev" aria-label="Testimoni Sebelumnya">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <!-- Slider Viewport & Track -->
+      <div class="testi-viewport" id="testiViewport">
+        <div class="testi-track" id="testiTrack">
+          <!-- Card 1 -->
+          <div class="t-card">
+            <span class="t-badge">🏢 Papan Grand Opening</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Pesan papan bunga grand opening kantor jam 10 pagi, jam 3 sore sudah sampai di lokasi. Rangkaiannya rapi banget dan bunganya segar. Recommended!”</p>
+            <div class="t-who">
+              <img class="t-ava" src="assets/testi-1.webp" alt="Foto Profil Bapak Hendra" width="48" height="48" loading="lazy">
+              <div>
+                <b>Bapak Hendra</b>
+                <span>Perusahaan di KIIC, Karawang</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="t-card">
+            <span class="t-badge">🕊️ Karangan Duka Cita</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Waktu ada musibah keluarga, Aida Florist bantu dengan cepat. Karangan dukanya sopan, tulisannya rapi, dan langsung diantar ke rumah duka. Terima kasih banyak.”</p>
+            <div class="t-who">
+              <img class="t-ava" src="assets/testi-2.webp" alt="Foto Profil Ibu Rina" width="48" height="48" loading="lazy">
+              <div>
+                <b>Ibu Rina Marlina</b>
+                <span>Karawang Barat</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="t-card">
+            <span class="t-badge">💐 Standing Flower Wedding</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Standing bunga untuk resepsi pernikahan kami hasilnya cantik melebihi ekspektasi. Harga bersahabat, komunikasi juga enak. Tamu-tamu banyak yang memuji.”</p>
+            <div class="t-who">
+              <img class="t-ava" src="assets/testi-3.jpg" alt="Foto Profil Dimas &amp; Sari" width="48" height="48" loading="lazy">
+              <div>
+                <b>Sari &amp; Dimas</b>
+                <span>Pengantin, Telukjambe (Resinda)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="t-card">
+            <span class="t-badge">🎉 Papan Selamat &amp; Sukses</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Sudah langganan kantor untuk ucapan selamat ke rekan bisnis di kawasan Surya Cipta. Pengerjaan cepat, huruf busa rapi, dan selalu ada kiriman foto bukti sebelum dan sesudah kirim.”</p>
+            <div class="t-who">
+              <div class="t-ava-init" style="background:linear-gradient(135deg,#123524,#1F593C);">AW</div>
+              <div>
+                <b>Bapak Anton Wijaya</b>
+                <span>PT Denso / Surya Cipta</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="t-card">
+            <span class="t-badge">🌹 Buket Mawar Premium</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Pesan buket mawar segar untuk perayaan wisuda adik. Rangkaian bunganya estetik kekinian, wanginya tahan berhari-hari, dan wrapping-nya sangat mewah. Adminnya ramah banget!”</p>
+            <div class="t-who">
+              <div class="t-ava-init" style="background:linear-gradient(135deg,#801D38,#C93B62);">AK</div>
+              <div>
+                <b>dr. Amanda Kartika</b>
+                <span>Galuh Mas, Karawang</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="t-card">
+            <span class="t-badge">💍 Papan Wedding Luxury</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Papan bunga ukuran besar untuk pernikahan mitra kerja di Mercure Karawang sangat memuaskan. Komposisi bunganya rimbun dan mewah, tepat waktu sebelum acara dimulai.”</p>
+            <div class="t-who">
+              <div class="t-ava-init" style="background:linear-gradient(135deg,#0E3A53,#1D6A97);">AS</div>
+              <div>
+                <b>Bapak Agus Sugiarto</b>
+                <span>Grand Taruma, Karawang Barat</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="t-card">
+            <span class="t-badge">🏺 Bunga Meja &amp; Vas Keramik</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Bunga meja untuk ruang direksi sangat segar dan elegan. Tamu VIP yang berkunjung banyak yang terkesan. Sangat praktis pesan lewat WhatsApp, tinggal transfer langsung beres.”</p>
+            <div class="t-who">
+              <div class="t-ava-init" style="background:linear-gradient(135deg,#1A4C40,#2D8B75);">RD</div>
+              <div>
+                <b>Ibu Ratna Dewi</b>
+                <span>CV Sinar Mandiri, Karawang Timur</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="t-card">
+            <span class="t-badge">🕊️ Duka Cita 24 Jam Express</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Luar biasa respon admin tengah malam saat kami butuh papan duka cita mendesak. Pagi harinya sudah terpasang rapi di rumah duka. Pelayanan 24 jam yang benar-benar nyata.”</p>
+            <div class="t-who">
+              <div class="t-ava-init" style="background:linear-gradient(135deg,#2E3842,#526375);">IH</div>
+              <div>
+                <b>Bapak Irfan Hakim</b>
+                <span>Klari, Karawang</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="t-card">
+            <span class="t-badge">🎓 Buket Wisuda &amp; Segar</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Buket wisudanya gemas dan estetik banget buat foto-foto! Bunga matahari dan baby breath-nya segar pol. Harganya pas banget di kantong mahasiswa. Makasih Aida Florist!”</p>
+            <div class="t-who">
+              <div class="t-ava-init" style="background:linear-gradient(135deg,#B35309,#D97706);">DM</div>
+              <div>
+                <b>Devi Maharani</b>
+                <span>Alumni UNSIKA Karawang</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 10 -->
+          <div class="t-card">
+            <span class="t-badge">🏢 Papan Bunga Grand Opening</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Admin komunikatif dan profesional, invoice resmi dikirimkan cepat untuk keperluan klaim kantor. Konstruksi papan tripleknya kokoh tidak mudah roboh tertiup angin.”</p>
+            <div class="t-who">
+              <div class="t-ava-init" style="background:linear-gradient(135deg,#165337,#228659);">RK</div>
+              <div>
+                <b>Bapak Rudi Kurniawan</b>
+                <span>Kawasan Industri KIM Karawang</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 11 -->
+          <div class="t-card">
+            <span class="t-badge">🌸 Anggrek Bulan &amp; Meja</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Rangkaian anggrek bulan ungu untuk hadiah ulang tahun sangat cantik dan mekar sempurna. Dikirim dengan aman menggunakan mobil kurir khusus. Recommended florist!”</p>
+            <div class="t-who">
+              <div class="t-ava-init" style="background:linear-gradient(135deg,#5B21B6,#7C3AED);">MP</div>
+              <div>
+                <b>Ibu Maya Puspita</b>
+                <span>Resinda Estate, Telukjambe</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 12 -->
+          <div class="t-card">
+            <span class="t-badge">✨ Papan Bunga Selamat &amp; Sukses</span>
+            <span class="quote">”</span>
+            <div class="t-stars">★★★★★</div>
+            <p>“Jangkauan kirim sampai Cikampek tanpa biaya mahal. Kualitas bunga tetap segar saat sampai di lokasi peresmian ruko mitra kami. Sangat puas dengan layanannya!”</p>
+            <div class="t-who">
+              <div class="t-ava-init" style="background:linear-gradient(135deg,#854D0E,#CA8A04);">DP</div>
+              <div>
+                <b>Bapak Doni Prasetyo</b>
+                <span>Cikampek, Karawang</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="t-card reveal d2">
-        <span class="quote">”</span>
-        <div class="t-stars">★★★★★</div>
-        <p>“Waktu ada musibah keluarga, Aida Florist bantu dengan cepat. Karangan dukanya sopan, tulisannya rapi, dan langsung diantar ke rumah duka. Terima kasih banyak.”</p>
-        <div class="t-who">
-          <img class="t-ava" src="assets/testi-2.webp" alt="Foto Profil Ibu Rina" width="48" height="48" loading="lazy">
-          <span><b>Ibu Rina</b><span>Karawang Barat</span></span>
-        </div>
-      </div>
-      <div class="t-card reveal d3">
-        <span class="quote">”</span>
-        <div class="t-stars">★★★★★</div>
-        <p>“Standing bunga untuk resepsi pernikahan kami hasilnya cantik melebihi ekspektasi. Harga bersahabat, komunikasi juga enak. Tamu-tamu banyak yang memuji.”</p>
-        <div class="t-who">
-          <img class="t-ava" src="assets/testi-3.jpg" alt="Foto Profil Dimas &amp; Sari" width="48" height="48" loading="lazy">
-          <span><b>Sari &amp; Dimas</b><span>Pengantin, Telukjambe</span></span>
-        </div>
-      </div>
+
+      <!-- Nav Button Next -->
+      <button class="testi-nav-btn testi-next" id="testiNext" aria-label="Testimoni Selanjutnya">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
     </div>
+
+    <!-- Dots Pagination (Titik Indikator Interaktif) -->
+    <div class="testi-dots" id="testiDots" role="tablist" aria-label="Navigasi Halaman Testimoni"></div>
   </div>
 </section>
 
@@ -1417,6 +1616,159 @@ lightbox.addEventListener('touchend',e=>{
     closeLb();
   }
 },{passive:true});
+
+/* ============ TESTIMONIAL SLIDER & CAROUSEL ============ */
+(function initTestiSlider() {
+  const track = document.getElementById('testiTrack');
+  const viewport = document.getElementById('testiViewport');
+  const dotsContainer = document.getElementById('testiDots');
+  const prevBtn = document.getElementById('testiPrev');
+  const nextBtn = document.getElementById('testiNext');
+  if (!track || !viewport || !dotsContainer) return;
+
+  const cards = Array.from(track.querySelectorAll('.t-card'));
+  const totalCards = cards.length;
+  let currentPage = 0;
+  let totalPages = 1;
+  let cardsPerView = 3;
+  let autoplayTimer = null;
+
+  function getCardsPerView() {
+    if (window.innerWidth <= 640) return 1;
+    if (window.innerWidth <= 992) return 2;
+    return 3;
+  }
+
+  function updateSlider(animate = true) {
+    cardsPerView = getCardsPerView();
+    totalPages = Math.ceil(totalCards / cardsPerView);
+    if (currentPage >= totalPages) currentPage = totalPages - 1;
+    if (currentPage < 0) currentPage = 0;
+
+    // Render interactive pagination dots
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.className = 't-dot' + (i === currentPage ? ' active' : '');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', `Testimoni Halaman ${i + 1} dari ${totalPages}`);
+      dot.setAttribute('aria-selected', i === currentPage ? 'true' : 'false');
+      dot.addEventListener('click', () => {
+        currentPage = i;
+        slideToCurrent();
+        resetAutoplay();
+      });
+      dotsContainer.appendChild(dot);
+    }
+
+    slideToCurrent(animate);
+  }
+
+  function slideToCurrent(animate = true) {
+    track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)' : 'none';
+    
+    const firstCard = cards[0];
+    if (!firstCard) return;
+    
+    const cardWidth = firstCard.offsetWidth;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 24;
+    const stride = cardWidth + gap;
+    
+    let targetIndex = currentPage * cardsPerView;
+    const maxIndex = totalCards - cardsPerView;
+    if (targetIndex > maxIndex) targetIndex = Math.max(0, maxIndex);
+
+    let offset = targetIndex * stride;
+    const maxOffset = track.scrollWidth - viewport.clientWidth;
+    if (offset > maxOffset) offset = Math.max(0, maxOffset);
+
+    track.style.transform = `translateX(-${offset}px)`;
+
+    // Update active dot
+    const dots = dotsContainer.querySelectorAll('.t-dot');
+    dots.forEach((d, idx) => {
+      const isActive = idx === currentPage;
+      d.classList.toggle('active', isActive);
+      d.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+  }
+
+  function nextSlide() {
+    currentPage = (currentPage + 1) % totalPages;
+    slideToCurrent();
+  }
+
+  function prevSlide() {
+    currentPage = (currentPage - 1 + totalPages) % totalPages;
+    slideToCurrent();
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      resetAutoplay();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      resetAutoplay();
+    });
+  }
+
+  // Autoplay functionality
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(nextSlide, 4500);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  viewport.addEventListener('mouseenter', stopAutoplay);
+  viewport.addEventListener('mouseleave', startAutoplay);
+
+  // Touch / Swipe support
+  let touchStartX = 0, touchEndX = 0;
+  viewport.addEventListener('touchstart', e => {
+    stopAutoplay();
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  viewport.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) nextSlide();
+      else prevSlide();
+    }
+    startAutoplay();
+  }, { passive: true });
+
+  // Window resize debounced update
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      updateSlider(false);
+    }, 150);
+  });
+
+  // Initial load
+  updateSlider(false);
+  startAutoplay();
+})();
 
 /* ============ FAQ ACCORDION ============ */
 document.querySelectorAll('.faq-item').forEach(item=>{
