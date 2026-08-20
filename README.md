@@ -1,17 +1,17 @@
-# 🌸 Anang Florist — Landing Page Profesional
+# 🌸 Aida Florist — Landing Page Profesional
 
-Landing page modern dan berkonversi tinggi (*high-conversion*) untuk **Toko Karangan Bunga Karawang (Anang Florist)**. Dirancang dengan estetika floral premium, navigasi responsif, galeri interaktif dengan *swipe touch*, dan integrasi langsung ke WhatsApp 24 jam.
+Landing page modern dan berkonversi tinggi (*high-conversion*) untuk **Toko Karangan Bunga Karawang (Aida Florist)**. Dirancang dengan estetika floral premium, navigasi responsif, galeri interaktif dengan *swipe touch*, dan integrasi langsung ke WhatsApp 24 jam.
 
 ---
 
 ## 📸 Pratinjau Tampilan (Screenshots)
 
 ### 💻 Tampilan Desktop
-![Tampilan Desktop Anang Florist](assets/preview-desktop.jpg)
+![Tampilan Desktop Aida Florist](assets/preview-desktop.jpg)
 
 ### 📱 Tampilan Mobile
 <p align="center">
-  <img src="assets/preview-mobile.jpg" alt="Tampilan Mobile Anang Florist" width="360" style="border-radius:16px; box-shadow:0 12px 35px rgba(0,0,0,0.18);" />
+  <img src="assets/preview-mobile.jpg" alt="Tampilan Mobile Aida Florist" width="360" style="border-radius:16px; box-shadow:0 12px 35px rgba(0,0,0,0.18);" />
 </p>
 
 ---
@@ -63,7 +63,7 @@ Tidak memerlukan instalasi *build tool* (Node/Webpack) atau *framework* tambahan
 
 | Bagian | Lokasi di `index.html` | Keterangan Penyesuaian |
 |---|---|---|
-| **Nomor WhatsApp** | Cari `081315021922` | Ganti dengan nomor WhatsApp pemilik toko |
+| **Nomor WhatsApp** | Cari `081319400632` | Ganti dengan nomor WhatsApp pemilik toko |
 | **Statistik Toko** | Class `.stats-inner` (atribut `data-count`) | Sesuaikan angka tahun pengalaman / jumlah pesanan |
 | **Testimoni** | Section `#testimoni` | Perbarui ulasan atau nama pelanggan |
 | **Jam & Alamat** | Section `#kontak` & `<footer>` | Perbarui jam operasional atau alamat fisik |
@@ -80,4 +80,4 @@ Tidak memerlukan instalasi *build tool* (Node/Webpack) atau *framework* tambahan
 
 ---
 
-© 2026 **Anang Florist Karawang**. Hak Cipta Dilindungi.
+© 2026 **Aida Florist Karawang**. Hak Cipta Dilindungi.
