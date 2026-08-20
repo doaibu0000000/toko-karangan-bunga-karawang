@@ -262,43 +262,36 @@ h1,h2,h3,h4{font-family:var(--font-display);color:var(--forest);line-height:1.18
 /* ============ TESTIMONIALS (SLIDER & CAROUSEL) ============ */
 .testi{background:var(--cream);position:relative;overflow:hidden}
 .testi-slider-wrap{position:relative;margin-top:16px}
-.testi-viewport{overflow:hidden;border-radius:18px;padding:12px 6px 20px;user-select:none;touch-action:pan-y}
-.testi-track{display:flex;gap:24px;transition:transform .45s cubic-bezier(0.25, 1, 0.5, 1);will-change:transform}
-.t-card{flex:0 0 calc((100% - 48px) / 3);min-width:calc((100% - 48px) / 3);box-sizing:border-box;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;position:relative;box-shadow:var(--shadow-sm);transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;display:flex;flex-direction:column;justify-content:space-between}
-.t-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:rgba(212,160,23,.4)}
-.t-badge{display:inline-flex;align-items:center;gap:6px;background:var(--cream-2);color:var(--forest-3);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:14px;border:1px solid rgba(212,160,23,.18);align-self:flex-start}
-.t-card .quote{font-family:var(--font-display);font-size:3.2rem;line-height:1;color:var(--gold);opacity:.35;position:absolute;top:16px;right:22px;pointer-events:none}
+.testi-viewport{overflow:hidden;border-radius:20px;padding:14px 6px 22px;user-select:none;touch-action:pan-y;cursor:grab}
+.testi-viewport:active{cursor:grabbing}
+.testi-track{display:flex;gap:24px;transition:transform .6s cubic-bezier(0.16, 1, 0.3, 1);will-change:transform}
+.t-card{flex:0 0 calc((100% - 48px) / 3);min-width:calc((100% - 48px) / 3);box-sizing:border-box;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 24px;position:relative;box-shadow:0 4px 18px rgba(18,53,36,.06);transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .4s ease, border-color .4s ease;display:flex;flex-direction:column;justify-content:space-between}
+.t-card:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(18,53,36,.12);border-color:rgba(212,160,23,.5)}
+.t-badge{display:inline-flex;align-items:center;gap:6px;background:var(--cream-2);color:var(--forest-3);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:14px;border:1px solid rgba(212,160,23,.22);align-self:flex-start}
+.t-card .quote{font-family:var(--font-display);font-size:3.4rem;line-height:1;color:var(--gold);opacity:.35;position:absolute;top:16px;right:22px;pointer-events:none;transition:transform .3s ease, opacity .3s ease}
+.t-card:hover .quote{transform:scale(1.12) rotate(-5deg);opacity:.65}
 .t-stars{color:var(--gold);letter-spacing:3px;font-size:.92rem;margin-bottom:12px}
-.t-card p{font-size:.91rem;color:var(--ink);margin-bottom:18px;line-height:1.62;flex:1}
+.t-card p{font-size:.91rem;color:var(--ink);margin-bottom:18px;line-height:1.64;flex:1}
 .t-who{display:flex;align-items:center;gap:13px;border-top:1px dashed var(--line);padding-top:14px;margin-top:auto}
 .t-ava{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold-soft);box-shadow:0 4px 10px rgba(0,0,0,.08);flex:none;background:var(--cream-2)}
 .t-ava-init{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.95rem;color:#fff;border:2px solid var(--gold-soft);box-shadow:0 4px 10px rgba(0,0,0,.08);flex:none}
 .t-who b{display:block;font-size:.92rem;color:var(--forest);line-height:1.2}
 .t-who span{font-size:.76rem;color:var(--muted);margin-top:2px;display:block}
 
-/* Slider Navigation Buttons */
-.testi-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);color:var(--forest);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-md);transition:all .25s ease;z-index:10}
-.testi-nav-btn:hover{background:var(--forest);color:#fff;border-color:var(--forest);transform:translateY(-50%) scale(1.08)}
-.testi-prev{left:-20px}
-.testi-next{right:-20px}
-
-/* Interactive Pagination Dots */
-.testi-dots{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:24px}
-.t-dot{width:12px;height:12px;border-radius:50%;background:rgba(18,53,36,.22);border:0;cursor:pointer;padding:0;transition:all .35s cubic-bezier(0.34, 1.56, 0.64, 1)}
-.t-dot:hover{background:rgba(18,53,36,.5);transform:scale(1.15)}
-.t-dot.active{width:34px;border-radius:12px;background:linear-gradient(90deg,var(--forest),var(--gold));box-shadow:0 2px 10px rgba(212,160,23,.45)}
+/* Interactive Pagination Dots with Glowing Pill Indicator */
+.testi-dots{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:26px}
+.t-dot{position:relative;width:12px;height:12px;border-radius:50%;background:rgba(18,53,36,.22);border:0;cursor:pointer;padding:0;transition:all .45s cubic-bezier(0.16, 1, 0.3, 1);outline:none}
+.t-dot:hover{background:rgba(18,53,36,.55);transform:scale(1.2)}
+.t-dot.active{width:36px;border-radius:12px;background:linear-gradient(90deg,var(--forest),var(--gold));box-shadow:0 3px 12px rgba(212,160,23,.45)}
 
 @media(max-width:992px){
   .t-card{flex:0 0 calc((100% - 24px) / 2);min-width:calc((100% - 24px) / 2)}
-  .testi-prev{left:-12px}
-  .testi-next{right:-12px}
 }
 @media(max-width:640px){
   .t-card{flex:0 0 100%;min-width:100%;padding:24px 20px}
-  .testi-nav-btn{display:none}
-  .testi-dots{gap:8px;margin-top:16px}
+  .testi-dots{gap:8px;margin-top:18px}
   .t-dot{width:10px;height:10px}
-  .t-dot.active{width:26px}
+  .t-dot.active{width:28px}
 }
 
 /* ============ FAQ ============ */
@@ -1011,11 +1004,6 @@ footer{background:var(--forest);color:#BFD6C7;padding:70px 0 0}
     </div>
 
     <div class="testi-slider-wrap reveal">
-      <!-- Nav Button Prev -->
-      <button class="testi-nav-btn testi-prev" id="testiPrev" aria-label="Testimoni Sebelumnya">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-
       <!-- Slider Viewport & Track -->
       <div class="testi-viewport" id="testiViewport">
         <div class="testi-track" id="testiTrack">
@@ -1200,11 +1188,6 @@ footer{background:var(--forest);color:#BFD6C7;padding:70px 0 0}
           </div>
         </div>
       </div>
-
-      <!-- Nav Button Next -->
-      <button class="testi-nav-btn testi-next" id="testiNext" aria-label="Testimoni Selanjutnya">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
     </div>
 
     <!-- Dots Pagination (Titik Indikator Interaktif) -->
@@ -1622,8 +1605,6 @@ lightbox.addEventListener('touchend',e=>{
   const track = document.getElementById('testiTrack');
   const viewport = document.getElementById('testiViewport');
   const dotsContainer = document.getElementById('testiDots');
-  const prevBtn = document.getElementById('testiPrev');
-  const nextBtn = document.getElementById('testiNext');
   if (!track || !viewport || !dotsContainer) return;
 
   const cards = Array.from(track.querySelectorAll('.t-card'));
@@ -1632,6 +1613,7 @@ lightbox.addEventListener('touchend',e=>{
   let totalPages = 1;
   let cardsPerView = 3;
   let autoplayTimer = null;
+  const AUTOPLAY_INTERVAL = 2800; // 2.8 seconds fast smooth rotation
 
   function getCardsPerView() {
     if (window.innerWidth <= 640) return 1;
@@ -1665,7 +1647,7 @@ lightbox.addEventListener('touchend',e=>{
   }
 
   function slideToCurrent(animate = true) {
-    track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)' : 'none';
+    track.style.transition = animate ? 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
     
     const firstCard = cards[0];
     if (!firstCard) return;
@@ -1685,7 +1667,7 @@ lightbox.addEventListener('touchend',e=>{
 
     track.style.transform = `translateX(-${offset}px)`;
 
-    // Update active dot
+    // Update active dot with glowing pill effect
     const dots = dotsContainer.querySelectorAll('.t-dot');
     dots.forEach((d, idx) => {
       const isActive = idx === currentPage;
@@ -1704,24 +1686,10 @@ lightbox.addEventListener('touchend',e=>{
     slideToCurrent();
   }
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      nextSlide();
-      resetAutoplay();
-    });
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      prevSlide();
-      resetAutoplay();
-    });
-  }
-
-  // Autoplay functionality
+  // Autoplay management
   function startAutoplay() {
     stopAutoplay();
-    autoplayTimer = setInterval(nextSlide, 4500);
+    autoplayTimer = setInterval(nextSlide, AUTOPLAY_INTERVAL);
   }
 
   function stopAutoplay() {
@@ -1739,33 +1707,36 @@ lightbox.addEventListener('touchend',e=>{
   viewport.addEventListener('mouseenter', stopAutoplay);
   viewport.addEventListener('mouseleave', startAutoplay);
 
-  // Touch / Swipe support
-  let touchStartX = 0, touchEndX = 0;
+  // Touch & Swipe gesture handling
+  let touchStartX = 0, touchEndX = 0, isTouching = false;
   viewport.addEventListener('touchstart', e => {
     stopAutoplay();
+    isTouching = true;
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
 
   viewport.addEventListener('touchend', e => {
+    if (!isTouching) return;
+    isTouching = false;
     touchEndX = e.changedTouches[0].screenX;
     const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 40) {
+    if (Math.abs(diff) > 35) {
       if (diff > 0) nextSlide();
       else prevSlide();
     }
     startAutoplay();
   }, { passive: true });
 
-  // Window resize debounced update
+  // Debounced Window Resize Handling
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
       updateSlider(false);
-    }, 150);
+    }, 120);
   });
 
-  // Initial load
+  // Initialize
   updateSlider(false);
   startAutoplay();
 })();
